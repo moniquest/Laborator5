@@ -10,7 +10,7 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Comanda {
+public class Comanda implements Comparable<Comanda> {
     @EqualsAndHashCode.Include
     @NonNull private Integer idComanda;
     @NonNull private LocalDate dataComanda;
@@ -48,4 +48,7 @@ public class Comanda {
     public String toString() {
         return "Comanda " + this.idComanda + " valoare " + this.getValoareTotala();
     }
-}
+    public int compareTo(Comanda other) {
+// Produse ordonate dupa id
+        return this.idComanda.compareTo(other.getIdComanda());
+} }
