@@ -65,35 +65,35 @@ public class Main {
         System.out.println(registru.getProdusMapDenumire("Produs_8"));
 
 
-        //TEMA//
-
-        //1.Comenzi ordonate dupa idComenzi//
-        System.out.println("Afizeaza Comenzi ordonate dupa idComanda : *******************");
-        Collection<Comanda> comenziordonate = registru.getComandaOrdonatadupaId();
-        for(Comanda p: comenziordonate){
-            System.out.println(p);
-        }
-        //2//
-        // --- TEMA 2: Testare ordonare specială (Nr. Articole, apoi ID) ---
-        System.out.println("Afiseaza comenzi ordonate dupa Nr. Articole, apoi ID: *******");
-        Collection<Comanda> comenziSortateSpecial = registru.getProduseOrdonateDupaNrArticole();
-        for (Comanda c : comenziSortateSpecial) {
-            System.out.println(c + " [Nr. Articole: " + c.getArticole().size() + "]");
-        }
-        //3//
-        System.out.println("Afisaza comanda cumulata din 4 si 5: ********* ");
-        Comanda comandaCumulata = registru.comenziadunate(6, 7);
-        System.out.println(comandaCumulata);
-        System.out.println("Articolele din comanda cumulată:");
-        for (ArticolComanda art : comandaCumulata.getArticole()) {
-            System.out.println("   -> " + art); }
-        //4//
-        System.out.println("Afisaza comenzile care contin id 5: ********* ");
-        List<Comanda> comenzigasite=registru.getComenziCuProdus(5);
-        if(!comenzigasite.isEmpty()){System.out.println("Nu exista comenzi!");}
-        for (Comanda c : comenzigasite) {
-            System.out.println(c);
-        }
+//        //TEMA//
+//
+//        //1.Comenzi ordonate dupa idComenzi//
+//        System.out.println("Afizeaza Comenzi ordonate dupa idComanda : *******************");
+//        Collection<Comanda> comenziordonate = registru.getComandaOrdonatadupaId();
+//        for(Comanda p: comenziordonate){
+//            System.out.println(p);
+//        }
+//        //2//
+//        // --- TEMA 2: Testare ordonare specială (Nr. Articole, apoi ID) ---
+//        System.out.println("Afiseaza comenzi ordonate dupa Nr. Articole, apoi ID: *******");
+//        Collection<Comanda> comenziSortateSpecial = registru.getProduseOrdonateDupaNrArticole();
+//        for (Comanda c : comenziSortateSpecial) {
+//            System.out.println(c + " [Nr. Articole: " + c.getArticole().size() + "]");
+//        }
+//        //3//
+//        System.out.println("Afisaza comanda cumulata din 4 si 5: ********* ");
+//        Comanda comandaCumulata = registru.comenziadunate(6, 7);
+//        System.out.println(comandaCumulata);
+//        System.out.println("Articolele din comanda cumulată:");
+//        for (ArticolComanda art : comandaCumulata.getArticole()) {
+//            System.out.println("   -> " + art); }
+//        //4//
+//        System.out.println("Afisaza comenzile care contin id 5: ********* ");
+//        List<Comanda> comenzigasite=registru.getComenziCuProdus(5);
+//        if(!comenzigasite.isEmpty()){System.out.println("Nu exista comenzi!");}
+//        for (Comanda c : comenzigasite) {
+//            System.out.println(c);
+//        }
     }
 
 }

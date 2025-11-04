@@ -146,42 +146,42 @@ public class Registru {
             comenzi.add(comandaRandom);
         }
     }
-    //TEMA//
-    public Collection<Comanda> getComandaOrdonatadupaId() {
-        TreeSet<Comanda> comenziordonate = new TreeSet<Comanda>();
-        comenziordonate.addAll(this.comenzi);
-        return comenziordonate;
-    }
-    public Collection<Comanda> getProduseOrdonateDupaNrArticole() {
-        List<Comanda> articoleordonate = new ArrayList<Comanda>();
-        articoleordonate.addAll(this.comenzi);
-        Collections.sort(articoleordonate, new ComparatorProdusNrArticole());
-        return articoleordonate;
-    }
-    public Comanda comenziadunate (Integer idComanda1, Integer idComanda2) {
-        Comanda c1 = this.getComanda(idComanda1);
-        Comanda c2 = this.getComanda(idComanda2);
-        Comanda comandanoua = new Comanda(31, LocalDate.now());
-        for (ArticolComanda art : c1.getArticole()) {
-            comandanoua.adaugaArticol(art);
-        }
-        for (ArticolComanda art : c2.getArticole()) {
-            comandanoua.adaugaArticol(art);
-        }
-        return comandanoua; }
-
-    public List<Comanda> getComenziCuProdus(Integer idProdus) {
-
-        List<Comanda> rezultate = new ArrayList<>();
-        for (Comanda c : this.comenzi) {
-            for (ArticolComanda art : c.getArticole()) {
-                if (art.getProdus().getIdProdus().equals(idProdus)) {
-                    rezultate.add(c);
-                    break;
-                }
-            }
-        }
-        return rezultate;
-    }
+//    //TEMA//
+//    public Collection<Comanda> getComandaOrdonatadupaId() {
+//        TreeSet<Comanda> comenziordonate = new TreeSet<Comanda>();
+//        comenziordonate.addAll(this.comenzi);
+//        return comenziordonate;
+//    }
+//    public Collection<Comanda> getProduseOrdonateDupaNrArticole() {
+//        List<Comanda> articoleordonate = new ArrayList<Comanda>();
+//        articoleordonate.addAll(this.comenzi);
+//        Collections.sort(articoleordonate, new ComparatorProdusNrArticole());
+//        return articoleordonate;
+//    }
+//    public Comanda comenziadunate (Integer idComanda1, Integer idComanda2) {
+//        Comanda c1 = this.getComanda(idComanda1);
+//        Comanda c2 = this.getComanda(idComanda2);
+//        Comanda comandanoua = new Comanda(31, LocalDate.now());
+//        for (ArticolComanda art : c1.getArticole()) {
+//            comandanoua.adaugaArticol(art);
+//        }
+//        for (ArticolComanda art : c2.getArticole()) {
+//            comandanoua.adaugaArticol(art);
+//        }
+//        return comandanoua; }
+//
+//    public List<Comanda> getComenziCuProdus(Integer idProdus) {
+//
+//        List<Comanda> rezultate = new ArrayList<>();
+//        for (Comanda c : this.comenzi) {
+//            for (ArticolComanda art : c.getArticole()) {
+//                if (art.getProdus().getIdProdus().equals(idProdus)) {
+//                    rezultate.add(c);
+//                    break;
+//                }
+//            }
+//        }
+//        return rezultate;
+//    }
 
 }
