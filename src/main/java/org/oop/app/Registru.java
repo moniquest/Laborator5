@@ -8,7 +8,7 @@ public class Registru {
 
     public Collection<Produs> getProduseOrdonateDupaId() {
         TreeSet<Produs> produseOrdonate = new TreeSet<Produs>();
-// Produs implementeaza Comparable dupa idProdus
+
         produseOrdonate.addAll(this.produse);
         return produseOrdonate;
     }
@@ -146,42 +146,78 @@ public class Registru {
             comenzi.add(comandaRandom);
         }
     }
-//    //TEMA//
-//    public Collection<Comanda> getComandaOrdonatadupaId() {
-//        TreeSet<Comanda> comenziordonate = new TreeSet<Comanda>();
-//        comenziordonate.addAll(this.comenzi);
-//        return comenziordonate;
-//    }
-//    public Collection<Comanda> getProduseOrdonateDupaNrArticole() {
-//        List<Comanda> articoleordonate = new ArrayList<Comanda>();
-//        articoleordonate.addAll(this.comenzi);
-//        Collections.sort(articoleordonate, new ComparatorProdusNrArticole());
-//        return articoleordonate;
-//    }
-//    public Comanda comenziadunate (Integer idComanda1, Integer idComanda2) {
-//        Comanda c1 = this.getComanda(idComanda1);
-//        Comanda c2 = this.getComanda(idComanda2);
-//        Comanda comandanoua = new Comanda(31, LocalDate.now());
-//        for (ArticolComanda art : c1.getArticole()) {
-//            comandanoua.adaugaArticol(art);
-//        }
-//        for (ArticolComanda art : c2.getArticole()) {
-//            comandanoua.adaugaArticol(art);
-//        }
-//        return comandanoua; }
-//
-//    public List<Comanda> getComenziCuProdus(Integer idProdus) {
-//
-//        List<Comanda> rezultate = new ArrayList<>();
-//        for (Comanda c : this.comenzi) {
-//            for (ArticolComanda art : c.getArticole()) {
-//                if (art.getProdus().getIdProdus().equals(idProdus)) {
-//                    rezultate.add(c);
-//                    break;
-//                }
-//            }
-//        }
-//        return rezultate;
-//    }
+    //TEMA//
+    public Collection<Comanda> getComandaOrdonatadupaId() {
+        TreeSet<Comanda> comenziordonate = new TreeSet<Comanda>();
+        comenziordonate.addAll(this.comenzi);
+        return comenziordonate;
+    }
+    public Collection<Comanda> getProduseOrdonateDupaNrArticole() {
+        List<Comanda> articoleordonate = new ArrayList<Comanda>();
+        articoleordonate.addAll(this.comenzi);
+        Collections.sort(articoleordonate, new ComparatorProdusNrArticole());
+        return articoleordonate;
+    }
+    public Comanda comenziadunate (Integer idComanda1, Integer idComanda2) {
+        Comanda c1 = this.getComanda(idComanda1);
+        Comanda c2 = this.getComanda(idComanda2);
+        Comanda comandanoua = new Comanda(31, LocalDate.now());
+        for (ArticolComanda art : c1.getArticole()) {
+            comandanoua.adaugaArticol(art);
+        }
+        for (ArticolComanda art : c2.getArticole()) {
+            comandanoua.adaugaArticol(art);
+        }
+        return comandanoua; }
+
+    public List<Comanda> getComenziCuProdus(Integer idProdus) {
+
+        List<Comanda> rezultate = new ArrayList<>();
+        for (Comanda c : this.comenzi) {
+            for (ArticolComanda art : c.getArticole()) {
+                if (art.getProdus().getIdProdus().equals(idProdus)) {
+                    rezultate.add(c);
+                    break;
+                }
+            }
+        }
+        return rezultate;
+    }
+
+    public List<Comanda> getComenziCuDouaProduse(Integer idProdus1, Integer idProdus2) {
+        List<Comanda> rezultate = new ArrayList<>();
+
+        for (Comanda c : this.comenzi) {
+            boolean gasitProdus1 = false;
+            boolean gasitProdus2 = false;
+
+            for (ArticolComanda art : c.getArticole()) {
+                if (art.getProdus().getIdProdus().equals(idProdus1)) {
+                    gasitProdus1 = true;
+                }
+
+                if (art.getProdus().getIdProdus().equals(idProdus2)) {
+                    gasitProdus2 = true;
+                }
+            }
+
+            if (gasitProdus1 && gasitProdus2) {
+                rezultate.add(c);
+            }
+        }
+        return rezultate;
+    }
+    public Double getTotalVanzariProdus(Integer idProdus) {
+        Double total = 0.0;
+
+        for (Comanda c : this.comenzi) {
+            for (ArticolComanda art : c.getArticole()) {
+                if (art.getProdus().getIdProdus().equals(idProdus)) {
+                    total += art.getValoareArticol();
+                }
+            }
+        }
+        return total;
+    }
 
 }
